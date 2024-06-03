@@ -1,0 +1,154 @@
+para,type,value,unit,description
+,,,,
+global,,,,
+startyear,int,2027,year,This sets the start year for looking at old components
+baseyear,int,2027,year,"If this is set, it overrides other year-dependent input"
+timeslice_start,str,2020010100,year-month-day-hour,Start date if using historical series
+timeslice_end,str,2021010100,year-month-day-hour,End date if using historical series
+solvername,str,gurobi,-,"cbc, gurobi, glpk, ipopt, etc.."
+solvergap,float,0.005,,"Acceptable solve gap for gurobi"
+dirpath_output,str,/Users/sebsva/development/tools/opti/examples/outputs/,folderpath,"Name of the folder where output is saved"
+dirpath_scenarios,str,inputs/scenarios/,folderpath,"Path to the folder containing different yearly scenarios"
+filepath_capacity_input,str,inputs/capacities/capacities.csv,filename,"Path to the input capacities file is found"
+filepath_capacity_output,str,outputs/capacities_temp.csv,filename,"Path to the output capacities file is found (can be same as input)"
+WACC,float,0.09,-,"Weighted average cost of capital"
+efficiency_AC_to_DC,float,0.98,-,"Efficiency of the electrolyzer"
+,,,,
+SpotMarket,,,,
+filepath,float,inputs/markets/spot/production.csv,-,"Filepath to spot market data"
+model,float,pseudoreal,-,"Model of the spot market: asppa, pseudoreal or real"
+electricity_tax,float,0.48,EUR/MWh,"Tax on consumed electricity from the spot market"
+allow_selling,bool,True,-,"Allow selling of electricity on the spot market"
+allow_buying,bool,False,-,"Allow buying of electricity on the spot market"
+,,,,
+market_H2,,,,
+price,float,3.5,EUR/kg,"Fixed price of hydrogen on the market"
+allow_selling,bool,False,-,"Allow selling of heat on the market"
+allow_buying,bool,False,-,"Allow buying of heat on the market"
+,,,,
+market_CO2,,,,
+price,float,0.100,EUR/kg,"Fixed price of carbon dioxide on the market"
+allow_selling,bool,False,-,"Allow selling of heat on the market"
+allow_buying,bool,False,-,"Allow buying of heat on the market"
+,,,,
+market_heat,,,,
+price,float,30,EUR/MWh,"Fixed price of heat on the market"
+allow_selling,bool,False,-,"Allow selling of heat on the market"
+allow_buying,bool,False,-,"Allow buying of heat on the market"
+,,,,
+Grid,,,,
+capex_factor,float,0,EUR/MW,Initial CAPEX of grid connection
+opex_factor,float,0,EUR/MW/year,Fixed OPEX of grid connection
+life,float,40,year,Years of operation before replacement
+grid_tariff_fixed,float,10.6,EUR/kW,Grid connection tariff   
+,,,,
+HP_steam_turbine,,,,
+M_steam_bleed_1,float,258.1,kg/s,"Steam flow at turbine bleed 1"
+M_steam_bleed_2,float,103.2,kg/s,"Steam flow at turbine bleed 2"
+Pr_steam_in,float,75.10e5,Pa,"Pressure at turbine inlet"
+Pr_steam_bleed_1,float,29.26e5,Pa,"Pressure at turbine bleed 1"
+Pr_steam_bleed_2,float,18.57e5,Pa,"Pressure at turbine bleed 2"
+Pr_steam_out,float,11.17e5,Pa,"Pressure at turbine outlet"
+x_steam_in,float,0.996,-,"Steam quality at turbine inlet"
+x_steam_bleed_1,float,0.898,-,"Steam quality at turbine bleed 1"
+x_steam_bleed_2,float,0.871,-,"Steam quality at turbine bleed 2"
+x_steam_out,float,0.848,-,"Steam quality  at turbine outlet"
+,,,,
+IP_steam_turbine,,,,
+M_steam_bleed_1,float,56.59,kg/s,"Steam flow at turbine bleed 1"
+M_steam_bleed_2,float,88.38,kg/s,"Steam flow at turbine bleed 2"
+Pr_steam_in,float,10.75e5,Pa,"Pressure at turbine inlet"
+Pr_steam_bleed_1,float,5.426e5,Pa,"Pressure at turbine bleed 1"
+Pr_steam_bleed_2,float,3.365e5,Pa,"Pressure at turbine bleed 2"
+Pr_steam_out,float,3.365e5,Pa,"Pressure at turbine outlet"
+T_steam_in,float,279.7,C,"Temperature at turbine inlet"
+T_steam_bleed_1,float,205.4,C,"Temperature at turbine bleed 1"
+T_steam_bleed_2,float,158.7,C,"Temperature at turbine bleed 2"
+T_steam_out,float,158.7,C,"Temperature at turbine outlet"
+,,,,
+LP_steam_turbine,,,,
+M_steam_bleed_1,float,110.59,kg/s,"Steam flow at turbine bleed 1"
+M_steam_bleed_2,float,33.41,kg/s,"Steam flow at turbine bleed 2"
+Pr_steam_in,float,3.302e5,Pa,"Pressure at turbine inlet"
+Pr_steam_bleed_1,float,1.241e5,Pa,"Pressure at turbine bleed 1"
+Pr_steam_bleed_2,float,0.2413e5,Pa,"Pressure at turbine bleed 2"
+Pr_steam_out,float,0.1387e5,Pa,"Pressure at turbine outlet"
+T_steam_in,float,158.5,C,"Temperature at turbine inlet"
+x_steam_bleed_1,float,0.970,-,"Steam quality at turbine bleed 1"
+x_steam_bleed_2,float,0.941,-,"Steam quality at turbine bleed 2"
+x_steam_out,float,0.875,-,"Steam quality at turbine outlet"
+,,,,
+LowTemperatureElectrolyzer,,,,
+capex_factor_stack,float,38000,EUR/(kg/h),"The capex of the stack for the low temperature electrolyzer"
+capex_factor_plant,float,45000,EUR/(kg/h),"The capex of the plant for the low temperature electrolyzer"
+opex_factor,float,1800,EUR/(kg/h)/year,"Fixed opex of the low temp. electrolyzer system"
+life_stack,float,10,year,"Years of low temperature stack operation before replacement"
+life_plant,float,20,year,"Years of operation of the low temperature plant before replacement"
+efficiency_DC_to_H2_BOL,float,0.054,MWh/kg,"Efficiency of the electrolyzer"
+auxpower,float,0.046,-,"Auxillary power usage of the low temp. electrolyzer system"
+degradation_factor,float,0.01,-/1000hour,"Degradation rate of the electrolyzer"
+part_load_factor,float,0.85,-,"Relative specific energy consumption at mimimum partial load"
+part_load_limit,float,0.5,-,"Minimum partial load of the electrolyzer"
+part_load_steps,int,3,-,"Number of part load steps"
+min_relative_capacity,float,0,-,"Minimum capacity of the electrolyzer relative to consumption"
+max_relative_capacity,float,2.0,-,"Maximum capacity of the electrolyzer relative to consumption"
+T_H2,float,353,K,"Output temperature of H2 from the low temp. electrolyzer system"
+Pr_H2,float,10e5,Pa,"Output pressure of H2 from the low temp. electrolyzer system"
+,,,,
+HighTemperatureElectrolyzer,,,,
+capex_factor_stack,float,55000,EUR/(kg/h),"Total high temperature stack initial CAPEX per kW DC"
+capex_factor_plant,float,50000,EUR/(kg/h),"Initial CAPEX of for high temp. electrolyzer BOP per AC power"
+opex_factor,float,reference,EUR/(kg/h)/year,"Fixed OPEX of the high temp. electrolyzer system"
+life_stack,float,10,year,"Years of high temp. stack operation before replacement"
+life_plant,float,20,year,"Years of operation of the high temp BOP before replacement"
+auxpower,float,0.15,-,"Auxillary power usage of the high temp. electrolyzer system"
+efficiency_DC_to_H2_BOL,float,0.0396,MWh/kg,"Efficency of steam electrolysis"
+degradation_factor,float,0,-/1000hour,"Degradation rate of steam electrolysis"
+T_stack,float,750,C,Operating temperature of stacks
+Pr_H2,float,1e5,Pa,"Output pressure of H2"
+T_H2,float,150,C,Output temperature of H2
+Pr_steam,float,1.5e5,Pa,"Input pressure of feed steam"
+T_steam,float,150,C,"Input temperature of feed steam"
+min_relative_cap,float,0,-,Minimum overcapacity of the HT electrolyzer
+max_relative_cap,float,0,-,Estimated overcapacity of the HT electrolyzer
+,,,,
+DirectAirCapture,,,,
+capex_factor,float,3500,EUR/(kg/h),"Initial capital expenses of direct air capture"
+opex_factor,float,120,EUR/(kg/h)/year,"Fixed operation expenses of direct air capture"
+life,float,15,year,"Years of operation before replacement"
+power_consumption,float,0.460,MWh/ton,"Power consumption of direct air capture per ton of CO2"
+heat_consumption,float,2.116,MWh/ton,"Heat consumption of direct air capture per ton of CO2"
+,,,,
+CONSTANTS,,,,
+,,,,
+a_gravity,float,9.82,m/s2,Acceleration due to gravity
+F,float,96485,C/mol,Faraday constant
+R_H2,float,0.00414,MJ/kg/K,Hydrogen gas constant
+T_crit_H2,float,33.2,K,Critical temperature of hydrogen
+Pr_crit_H2,float,1.3e6,Pa,Critical pressure of hydrogen
+M_H2,float,0.002016,kg/mol,H2 - kg per mol
+M_air,float,0.029,kg/mol,Air - kg per mol
+gamma,float,1.405,-,Heat capacity ratio of hydrogen
+Cp,float,0.01431,MJ/kg/K,Heat capacity of hydrogen at reference temperature (298K)
+R_ig,float,8.314,J/K/mol,Gas constant
+hoursinyear,float,8766,h/yr,Number of hours in one year
+air_g_per_mol,float,29,g/mol,Air g per mol
+StefanConstant,float,5.67E-08,W/m2/K4,Stefan Boltzmans constant
+HHV_H2,float,141.80,MJ/kg,Higher heating value of hydrogen
+LHV_H2,float,119.96,MJ/kg,Lower heating value of hydrogen
+HHV_oil,float,40.2,MJ/kg,Higher heating value of bio-oil
+LHV_oil,float,37.5,MJ/kg,Lower heating value of bio-oil
+price_oil,float,4,EUR/kg,Price of bio-oil
+Nm3_per_kg_H2,float,11.126,Nm3/kg,Lower heating value of hydrogen
+,,,,
+Thermal_storage,,,,
+Pr_steam_in,float,78.0e5,Pa,"Pressure at thermal storage inlet (charge)"
+Pr_steam_out,float,56.07e5,Pa,"Pressure at thermal storage outlet (discharge)"
+T_steam_in,float,293,C,"Temperature at thermal storage inlet (charge)"
+T_steam_out,float,282,C,"Temperature at thermal storage outlet (discharge)"
+x_steam_in,float,0.996,-,"Steam quality at thermal storage inlet (charge)"
+x_steam_out,float,0.900,-,"Steam quality  at thermal storage outlet (discharge)"
+h_steam_in_chrg, float, 2760, kJ/kg, "Enthalpy of steam into thermal storage during charging"
+h_steam_out_chrg, float, 650, kJ/kg, "Enthalpy of steam from thermal storage during charging"
+h_steam_in_dchrg, float, 1000, kJ/kg, "Enthalpy of steam into thermal storage during discharging"
+h_steam_out_dchrg, float, 2774, kJ/kg, "Enthalpy of steam from thermal storage during discharging"  
